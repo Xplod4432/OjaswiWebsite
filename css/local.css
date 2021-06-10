@@ -1,0 +1,17 @@
+.text-white{
+    color: #f4f4f4;
+}
+.bg-foot{
+    background-color: #263238;
+}
+.footer{
+    height: 20vh;
+    padding-top: 3rem;
+}
+.lr-links a{
+    color: white;
+    text-decoration: none;
+}
+.footer-link{
+    list-style-type: none; 
+}
