@@ -33,11 +33,11 @@ h2       { font-family: Verdana;
 <?php
     $text = fopen("aboutOjaswi.txt", "rb");
 
-    // Output the poem heading.
+    // Output the text heading.
     $line = rtrim(fgets($text));
     echo "<h1>" . $line . "</h1>";
 
-    // Output remainder of poem lines.
+    // Output remainder of text lines.
     echo "<pre class=\"prebody\">\n";
 
     while($line = fgets($text, 100))
@@ -51,11 +51,11 @@ h2       { font-family: Verdana;
 <?php 
 $text1 = fopen("dignitories.txt", "rb");
 
-// Output the poem heading.
+// Output the text heading.
 $line = rtrim(fgets($text1));
 echo "<h1>" . $line . "</h1>";
 
-// Output remainder of poem lines.
+// Output remainder of text lines.
 echo "<pre class=\"h2\">\n";
 
 
