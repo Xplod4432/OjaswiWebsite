@@ -27,7 +27,7 @@ h2       { font-family: Verdana;
 </head>
 
 <body>
-<center>
+<centre>
 <h2>About Ojaswi</h2>
 
 <?php
@@ -65,7 +65,7 @@ while($line = fgets($text1, 50))
 }
 echo "</pre>";
 ?>
-</center>
+</centre>
 
 </body>
 </html>
