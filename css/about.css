@@ -1,0 +1,19 @@
+body{ 
+    background-color: #FA8128;
+    color:            #600000;
+    margin: 50px 50px 50px 50px;
+    font-size: 12pt;
+     }
+h1{ 
+    font-size: 300%; 
+    font-family: "Times New Roman"
+}
+h2{ 
+    font-family: Verdana;
+    font-size: 150%; 
+}
+.prebody{ 
+    font-family: Arial;
+    font-size: 90%;
+    margin: 25px 50px 75px 100px; 
+}
