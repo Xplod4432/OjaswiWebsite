@@ -1,7 +1,7 @@
 body{ 
     background-color: #FA8128;
     color:            #600000;
-    margin: 50px 50px 50px 50px;
+    
     font-size: 12pt;
      }
 h1{ 
@@ -15,5 +15,5 @@ h2{
 .prebody{ 
     font-family: Arial;
     font-size: 90%;
-    margin: 25px 50px 75px 100px; 
+   
 }
