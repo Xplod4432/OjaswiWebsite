@@ -5,59 +5,30 @@
 
 ?>
 <center>
-<h1>About Ojaswi</h1>
-
+<h1>About Ojaswi</h1><br/>
+<p>
 <?php
     $text = fopen("aboutOjaswi.txt", "rb");
 
-    // Output the text heading.
-    $line = rtrim(fgets($text));
-    echo "<h1>" . $line . "</h1>";
-
-    // Output remainder of text lines.
-    echo "<pre class=\"prebody\">\n";
-
-    while($line = fgets($text, 100))
+    while(!feof($text))
     {
+        $line=fgets($text);
         echo $line;
     }
-    echo "</pre>";
+    fclose($text);
 ?>
-
+</p>
 <h2>Dignitories</h2>
 <?php 
-$text1 = fopen("dignitories.txt", "rb");
+    $text1 = fopen("dignitories.txt", "rb");
 
-// Output the text heading.
-$line = rtrim(fgets($text1));
-echo "<h4>" . $line . "</h4>";
-
-// Output remainder of text lines.
-echo "<pre class=\"prebody\">\n";
-
-
-while($line = fgets($text1, 4))
-{
-    echo $line;
-}
-echo "</pre>";
-
-
-// Output the text heading.
-$line = rtrim(fgets($text1));
-echo "<h3>" . $line . "</h3>";
-
-// Output remainder of text lines.
-echo "<pre class=\"prebody\">\n";
-
-
-while($line = fgets($text1, 300))
-{
-    echo $line;
-}
-echo "</pre>";
-
-
+    while (!feof($text1)) {
+        $line=fgets($text1);
+        echo "<h3>$line<h3>";
+        $desc=fgets($text1);
+        echo "<p>$desc</p>";
+    }
+    fclose($text1);
 ?>
 <centre>
 <button type="button" id="button" class="btn btn-info btn-lg"><i class="bi-geo-alt-fill" style="font-size:1rem;"></i>&nbspLocate Us</button>
