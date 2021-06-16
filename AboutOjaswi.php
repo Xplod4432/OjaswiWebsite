@@ -36,7 +36,7 @@ echo "<h4>" . $line . "</h4>";
 echo "<pre class=\"prebody\">\n";
 
 
-while($line = fgets($text1, 200))
+while($line = fgets($text1, 4))
 {
     echo $line;
 }
