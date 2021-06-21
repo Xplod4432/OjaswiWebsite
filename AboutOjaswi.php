@@ -24,6 +24,7 @@
     $text1 = fopen("dignitories.txt", "rb");
     $idk = array('One', 'Two', 'Three', 'Four', 'Five');
     $l = 0;
+    $i;
     while (!feof($text1)) {
         $i=$idk[$l];
         $line=fgets($text1);
