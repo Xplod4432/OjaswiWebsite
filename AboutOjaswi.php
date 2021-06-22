@@ -8,7 +8,7 @@
 <h1>About Ojaswi</h1><br/>
 <p>
 <?php
-    $text = fopen("aboutOjaswi.txt", "rb");
+    $text = fopen("./content/about/aboutOjaswi.txt", "rb");
 
     while(!feof($text))
     {
@@ -21,7 +21,7 @@
 <h2>Dignitories</h2>
 <div class="accordion" id="accordionExample">
 <?php
-    $text1 = fopen("dignitories.txt", "rb");
+    $text1 = fopen("./content/dignitaries/dignitaries.txt", "rb");
     $idk = array('One', 'Two', 'Three', 'Four', 'Five');
     $l = 0;
     $i;
@@ -30,7 +30,7 @@
         $line=fgets($text1);
         echo "<div class='accordion-item'>
         <h2 class='accordion-header' id='heading$i'>
-          <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapse$i' aria-expanded='true' aria-controls='collapse$i'>$line </button>
+          <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#collapse$i' aria-expanded='false' aria-controls='collapse$i'>$line </button>
           </h2>
           <div id='collapse$i' class='accordion-collapse collapse' aria-labelledby='heading$i' data-bs-parent='#accordionExample'>
             <div class='accordion-body'>";

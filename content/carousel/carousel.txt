@@ -1,0 +1,12 @@
+000107506.jpg
+image1
+First slide label
+Some representative placeholder content for the first slide
+blog-ph.jpg
+image2
+Second slide label
+Some representative placeholder content for the second slide.
+I86rTVl.jpeg
+image3
+Third slide label
+Some representative placeholder content for the third slide.

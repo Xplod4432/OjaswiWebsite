@@ -1,4 +1,4 @@
-<footer class="footer bg-foot">
+</div><footer class="footer bg-foot">
         <div class="lr-links text-white container">
         <div class="row">
         <div class="col-sm-6">
