@@ -15,3 +15,8 @@
 .footer-link{
     list-style-type: none; 
 }
+.bg-custom{
+    background: #f12711;
+    background: -webkit-linear-gradient(to right, #f5af19, #f12711);
+    background: linear-gradient(to right, #f5af19, #f12711);
+}
