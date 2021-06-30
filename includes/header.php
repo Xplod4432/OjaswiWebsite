@@ -1,3 +1,4 @@
+<?php include_once 'includes/session.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,28 +26,35 @@
           <a class="nav-link active" aria-current="page" href="./index.php"><i class="bi-house-fill"></i>&nbspHome</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
+          <a class="nav-link" href="AboutOjaswi.php">About Ojaswi</a>
+        </li>      
+      </ul>
+      <ul class="nav navbar-nav ml-auto">
+      <?php 
+			if (!isset($_SESSION['userid'])) {
+	  ?>
+    <li class="nav-item">
+        <a class="nav-link" href="./login.php">Login</a>
+      </li>
+      <?php } else{?>
+      <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            <span>
+              Hello <?php echo $_SESSION['username'] ?>
+            </span>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="AboutOjaswi.php">About Ojaswi</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="./blognew.php">Create Blog</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="./viewrecords.php">View Blogs</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="./logout.php">Logout</a>
         </li>
-      
-      </ul>
-      <!--<form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>-->
+        <?php }?>
     </div>
   </div>
 </nav>
