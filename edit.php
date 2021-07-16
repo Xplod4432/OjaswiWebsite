@@ -14,6 +14,7 @@
     else{
         $id = $_GET['id'];
         $result = $crud->getBlogDetails($id);
+        $results = $crud->getTags()
     
 
     
@@ -27,12 +28,19 @@
             <input required type="text" class="form-control" id="blogtitle" name="blogtitle" value="<?php echo $result['blogtitle'];?>">
         </div>
         <div class="mb-3">
-            <label for="dateofblog" class="form-label">Date</label>
-            <input required type="text" class="form-control" id="dateofblog" name="dateofblog" value="<?php echo $result['dateofblog'];?>">
+            <label for="BlogTag" class="form-label">Select tag</label>
+            <select id="BlogTag" name="BlogTag" class="form-select">
+            <?php while($r = $results->fetch(PDO::FETCH_ASSOC)) {?>
+                   <option value="<?php echo $r['blog_tag_id'] ?>" <?php if ($r['blog_tag_id'] == $result['blog_tag_id']) {
+                       echo "selected";
+                   }
+                   ?>><?php echo $r['name']; ?></option>
+                <?php }?>
+            </select>
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">Content</label>
-            <textarea required class="form-control" id="content" name="content" rows="3" value="<?php echo $result['blogcontent'];?>"></textarea>
+            <textarea required class="form-control" id="content" name="content" rows="3"><?php echo $result['blogcontent'];?></textarea>
         </div>
         <div class="mb-3">
             <label for="previewtxt" class="form-label">Content Preview</label>

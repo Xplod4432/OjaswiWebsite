@@ -15,16 +15,19 @@
     
     
 ?>
+<div class="row row-cols-1 row-cols-md-3 g-4">
 <div class="col py-2">
     <div class="card h-100 shadow-lg p-3 mb-5 bg-white rounded">
-    <img src="<?php echo $result['imagepath'] ; ?>" class="card-img-top" style="width:30%;"alt="<?php echo $result['blogtitle']; ?>">
+    <img src="<?php echo $result['imagepath'] ; ?>" class="card-img-top" alt="<?php echo $result['blogtitle']; ?>">
       <div class="card-body">
             <h5 class="card-title"><?php echo $result['blogtitle']; ?></h5>
+            <p class="card-text"><?php echo $result['name']; ?></p>
             <p class="card-text"><?php echo $result['blogpreview']; ?></p>
             <a href="blogpage.php?id=<?php echo $result['blog_id'] ?>" class="btn btn-primary">Continue reading</a>
         </div>
     </div>
     </div>
+</div>
 <br/>
                 <a href="viewrecords.php" class="btn btn-info">Back to List</a>
                 <a href="edit.php?id=<?php echo $result['blog_id'] ?>" class="btn btn-warning">Edit</a>
