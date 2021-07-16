@@ -28,7 +28,18 @@
         <li class="nav-item">
           <a class="nav-link" href="AboutOjaswi.php">About Ojaswi</a>
         </li>      
+        <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Search</a>
+      </li>
       </ul>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form class="d-flex" action="./search.php" method="get">
+        <input class="form-control me-2" id="Search" name="Search" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
       <ul class="nav navbar-nav ml-auto">
       <?php 
 			if (!isset($_SESSION['userid'])) {

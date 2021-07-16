@@ -6,21 +6,28 @@
     if(isset($_POST['submit'])){
         //extract values from the $_POST array
         $btitle = $_POST['blogtitle'];
-        $dob = $_POST['dateofblog'];
+        $tag = $_POST['BlogTag'];
+        $dob = date('Y-m-d H:i:s');
+        $tempdob = date('Y-m-d');
+        $temptime = date('H-i-s');
         $bcontent = $_POST['content'];
         $bpreview = $_POST['previewtxt'];
         $fblink = $_POST['fblink'];
         $instalink = $_POST['instalink'];
-        $reglink = $_POST['reglink'];
+        $reglink='';
+        if (isset($_POST['reglink'])) {
+            $reglink = $_POST['reglink'];
+        }
 
         $orig_file = $_FILES["blogimage"]["tmp_name"];
         $ext = pathinfo($_FILES["blogimage"]["name"], PATHINFO_EXTENSION);
         $target_dir = 'uploads/';
-        $destination = "$target_dir$dob.$ext";
+        $destination = "$target_dir$tempdob-$temptime.$ext";
         move_uploaded_file($orig_file,$destination);
 
         //Call function to insert and track if success or not
-        $isSuccess = $crud->insertBlogs($btitle, $dob, $bcontent, $bpreview,$fblink,$instalink,$reglink,$destination);
+        $isSuccess = $crud->insertBlogs($btitle, $tag, $dob, $bcontent, $bpreview,$fblink,$instalink,$reglink,$destination);
+        $TagName = $crud->getTagById($tag);
         if($isSuccess){
             include 'includes/successmessage.php';
         }
@@ -31,29 +38,42 @@
         
 
     }
-?>
-    
+?>    
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Card Preview</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Blog Preview</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><div class="row row-cols-1 row-cols-md-3 g-4">
+    <?php
+        $i=0;
+    while ($i<3) {
+        $card_src = $destination;
+        $card_title = $btitle;
+        $card_tag = $TagName['name'];
+        $card_text = $bpreview;
 
-    
-    <div class="col py-2">
-    <div class="card h-100 shadow-lg p-3 mb-5 bg-white rounded">
-    <img src="<?php echo $destination; ?>" class="card-img-top" style="width:30%;"alt="<?php echo $btitle; ?>">
-      <div class="card-body">
-            <h5 class="card-title"><?php echo $btitle; ?></h5>
-            <p class="card-text"><?php echo $bpreview; ?></p>
-            <a href="#" class="btn btn-primary">Continue reading</a>
-        </div>
-    </div>
-    </div>
-    <div class="">
+        include "./includes/cards.php";
+        ++$i;
+    } ?>
+    </div></div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><div class="">
         <h1><?php echo $btitle; ?></h1>
         <p><?php echo $dob; ?></p>
-        <img src="<?php echo $destination; ?>">
+        <img class="img-fluid" src="<?php echo $destination; ?>" alt="<?php echo $btitle; ?>">
         <a href="<?php echo $fblink; ?>"><i class="bi-facebook" style="font-size:1rem;"></i></a>
         <a href="<?php echo $instalink; ?>"><i class="bi-instagram" style="font-size:1rem;"></i></a>
         <p><?php echo $bcontent; ?></p>
-        <p><?php echo $reglink; ?></p>
-    </div>
+        <?php if (!empty($reglink)) { ?>
+        <p><a href="<?php echo $reglink; ?>">Register here</a></p>
+        <?php } ?>
+    </div></div>
+</div>
+
 <br>
 <br>
 <br>
