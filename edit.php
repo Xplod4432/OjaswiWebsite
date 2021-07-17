@@ -14,7 +14,7 @@
     else{
         $id = $_GET['id'];
         $result = $crud->getBlogDetails($id);
-        $results = $crud->getTags()
+        $results = $crud->getTags();
     
 
     
@@ -22,7 +22,8 @@
 
     <h1 class="text-center">Edit Record </h1>
 
-    <form method="post" action="success.php" enctype="multipart/form-data">
+    <form method="post" action="editpost.php" enctype="multipart/form-data">
+    <input type="hidden" name="blog_id" value="<?php echo $result['blog_id'] ?>" />
         <div class="mb-3">
             <label for="blogtitle" class="form-label">Blog Title</label>
             <input required type="text" class="form-control" id="blogtitle" name="blogtitle" value="<?php echo $result['blogtitle'];?>">
@@ -54,10 +55,31 @@
             <label for="instalink" class="form-label">Instagram Link</label>
             <input required type="text" class="form-control" id="instalink" name="instalink" value="<?php echo $result['instalink'];?>">
         </div>
+        <input type="checkbox" class="form-check-input" name="needRequired" id="needRequired" onclick="EnableDisableTextBox(this)"/>
+        <label for="needRequired" class="form-check-label">Has registration link?</label>
+        </div>
         <div class="mb-3">
             <label for="reglink" class="form-label">Registration Link</label>
-            <input required type="text" class="form-control" id="reglink" name="reglink" value="<?php echo $result['registrationlink'];?>">
+            <input required type="text" class="form-control" id="reglink" name="reglink" <?php if (!isset($result['registrationlink'])) {
+                echo "disabled";
+            }; ?> value="<?php echo $result['registrationlink']; ?>">
         </div>
+        <script type="text/javascript">
+            function EnableDisableTextBox(needRequired) {
+                var regreq = document.getElementById("reglink");
+                regreq.disabled = needRequired.checked ? false : true;
+                if (!regreq.disabled) {
+                    regreq.focus();
+                }
+            }
+            var loadFile = function(event) {
+                var output = document.getElementById('previewimage');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function() {
+                    URL.revokeObjectURL(output.src) // free memory
+                }
+            };
+        </script>
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </form>
 

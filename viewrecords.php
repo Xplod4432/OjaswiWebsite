@@ -11,8 +11,8 @@
         <tr>
             <th>#</th>
             <th>Title</th>
-            <th>Date</th>
             <th>Preview</th>
+            <th>Date</th>
             <th>Actions</th>
         </tr>
         <?php while ($r = $results->fetch(PDO::FETCH_ASSOC)) { ?>
