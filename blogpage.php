@@ -2,7 +2,6 @@
     $title = 'View Blog'; 
 
     require_once 'includes/header.php';
-    require_once 'db/conn.php'; 
 
     // Get Blog by id
     if(!isset($_GET['id'])){
@@ -11,7 +10,7 @@
     } else{
         $id = $_GET['id'];
         $result = $crud->getBlogDetails($id);
-    
+        $comres = $crud->getComments($id);
     
 ?>
 <div class="row">
@@ -35,5 +34,38 @@
                 <div class="col"><p><a href="<?php echo $result['registrationlink']; ?>">Register Here</a></p></div>
         <?php } ?>
 </div>
+<hr/>
+<section>
+        <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                <h1>Comments</h1>
+                <?php
+                while ($rc = $comres->fetch(PDO::FETCH_ASSOC)) { ?>
+                <div class="comment mt-4 text-justify float-left">
+                    <h4><?php echo $rc['comment_name']; ?></h4> <span><?php echo $rc['comment_date']; ?></span> <br>
+                    <p><?php echo $rc['comment_content']; ?></p>
+                </div>
+        <?php } ?>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                <form method="post" action="insertcom.php" enctype="multipart/form-data">
+                        <input type="hidden" name="blog_id" value="<?php echo $result['blog_id'] ?>" />
+                        <div class="mb-3">
+                        <label for="comment_name" class="form-label">Name</label>
+                        <input required type="text" class="form-control" id="comment_name" name="comment_name"/>
+                        </div>
+                        <div class="mb-3">
+                        <label for="comment_mail" class="form-label">e-Mail</label>
+                        <input required type="text" class="form-control" id="comment_mail" name="comment_mail"></input>
+                        </div>
+                        <div class="mb-3">
+                        <label for="comment_content" class="form-label">Content</label>
+                        <textarea required class="form-control" id="comment_content" name="comment_content" rows="3"></textarea>
+                        </div>
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                </form>
+        </div>
+        </div>
+</section>
 <?php }?>
 <?php require_once 'includes/footer.php'; ?>

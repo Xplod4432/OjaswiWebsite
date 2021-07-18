@@ -1,4 +1,8 @@
-<?php include_once 'includes/session.php'?>
+<?php 
+  include_once 'includes/session.php';
+  require_once './db/conn.php';
+  $results = $crud->getTags();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +31,17 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="AboutOjaswi.php">About Ojaswi</a>
-        </li>      
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span>
+              Explore by Tags
+            </span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <?php while($r = $results->fetch(PDO::FETCH_ASSOC)) {?><li><a class="dropdown-item" href="./blognew.php"><?php echo $r['name']; ?></a></li>
+            <li><hr class="dropdown-divider"></li><?php }?>
+          </ul>
         <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Search</a>
       </li>

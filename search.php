@@ -2,7 +2,6 @@
     $title = 'Search Blogs'; 
 
     require_once 'includes/header.php';
-    require_once 'db/conn.php'; 
 
     // Get Blog by id
     if(!isset($_GET['Search'])){

@@ -2,8 +2,7 @@
     $title = 'Edit Record'; 
     
     require_once './includes/header.php';
-    require_once './includes/auth_check.php';
-    require_once './db/conn.php'; 
+    require_once './includes/auth_check.php'; 
 
     if(!isset($_GET['id']))
     {
@@ -57,13 +56,11 @@
         </div>
         <input type="checkbox" class="form-check-input" name="needRequired" id="needRequired" onclick="EnableDisableTextBox(this)"/>
         <label for="needRequired" class="form-check-label">Has registration link?</label>
-        </div>
         <div class="mb-3">
             <label for="reglink" class="form-label">Registration Link</label>
             <input required type="text" class="form-control" id="reglink" name="reglink" <?php if (!isset($result['registrationlink'])) {
                 echo "disabled";
             }; ?> value="<?php echo $result['registrationlink']; ?>">
-        </div>
         <script type="text/javascript">
             function EnableDisableTextBox(needRequired) {
                 var regreq = document.getElementById("reglink");
@@ -72,14 +69,8 @@
                     regreq.focus();
                 }
             }
-            var loadFile = function(event) {
-                var output = document.getElementById('previewimage');
-                output.src = URL.createObjectURL(event.target.files[0]);
-                output.onload = function() {
-                    URL.revokeObjectURL(output.src) // free memory
-                }
-            };
         </script>
+        </div>
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </form>
 
