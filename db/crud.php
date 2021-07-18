@@ -33,23 +33,41 @@
             }
         }
 
+        public function insertComments($cname, $cmail, $ccontent, $cbid, $doc){
+            try {
+                // define sql statement to be executed
+                $sql = "INSERT INTO `blogcoments`(`comment_name`, `comment_mail`, `comment_content`, `blog_id`, `comment_date`) VALUES (:cname,:cmail,:ccontent,:cbid,:doc)";
+                //prepare the sql statement for execution
+                $stmt = $this->db->prepare($sql);
+                // bind all placeholders to the actual values
+                $stmt->bindparam(':cname',$cname);
+                $stmt->bindparam(':cmail',$cmail);
+                $stmt->bindparam(':ccontent',$ccontent);
+                $stmt->bindparam(':cbid',$cbid);
+                $stmt->bindparam(':doc',$doc);
+                // execute statement
+                $stmt->execute();
+                return true;
         
-        public function editBlog($id,$btitle, $dob, $bcontent, $bpreview,$fblink,$instalink,$reglink,$destination){
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+            }
+        }
+
+        public function editBlog($id,$btitle, $tag, $bcontent, $bpreview,$fblink,$instalink,$reglink){
             try{ 
-                 $sql = "UPDATE `ojblog` SET `blog_id`=:btitle,`blogtitle`=:btitle,`dateofblog`=:dob,`blogcontent`=:bcontent,`blogpreview`=:bpreview,`facebooklink`=:fblink,`instalink`=:instalink,`registrationlink`=:reglink,`imagepath`=:destination WHERE blog_id = :id ";
+                 $sql = "UPDATE `ojblog` SET `blogtitle`=:btitle,`blog_tag_id`=:tag,`blogcontent`=:bcontent,`blogpreview`=:bpreview,`facebooklink`=:fblink,`instalink`=:instalink,`registrationlink`=:reglink WHERE blog_id = :id ";
                  $stmt = $this->db->prepare($sql);
                  // bind all placeholders to the actual values
-                $stmt->bindparam(':id',$id);
-                $stmt->bindparam(':btitle',$btitle);
-                $stmt->bindparam(':dob',$dob);
-                $stmt->bindparam(':bcontent',$bcontent);
-                $stmt->bindparam(':bpreview',$bpreview);
-                $stmt->bindparam(':fblink',$fblink);
-                $stmt->bindparam(':instalink',$instalink);
-                $stmt->bindparam(':reglink',$reglink);
-                $stmt->bindparam(':destination',$destination);
-
- 
+                 $stmt->bindparam(':id',$id);
+                 $stmt->bindparam(':btitle',$btitle);
+                 $stmt->bindparam(':tag',$tag);
+                 $stmt->bindparam(':bcontent',$bcontent);
+                 $stmt->bindparam(':bpreview',$bpreview);
+                 $stmt->bindparam(':fblink',$fblink);
+                 $stmt->bindparam(':instalink',$instalink);
+                 $stmt->bindparam(':reglink',$reglink);
                  // execute statement
                  $stmt->execute();
                  return true;
@@ -65,6 +83,18 @@
                 $sql = "select *from ojblog a inner join blogtypes s on a.blog_tag_id = s.blog_tag_id order by dateofblog DESC";
                 $result = $this->db->query($sql);
                 return $result;
+            }catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+           }
+           
+        }
+
+        public function getComments($id){
+            try{
+                $sql = "SELECT * FROM `blogcoments` WHERE blog_id = $id ";
+                $res = $this->db->query($sql);
+                return $res;
             }catch (PDOException $e) {
                 echo $e->getMessage();
                 return false;

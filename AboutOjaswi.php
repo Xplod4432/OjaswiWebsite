@@ -44,22 +44,6 @@
     fclose($text1);
 ?>
 </div>
-<button type="button" id="button" class="btn btn-info btn-lg"><i class="bi-geo-alt-fill" style="font-size:1rem;"></i>&nbspLocate Us</button>
-<br/>
-<br/>
-
-<div id="iframeHolder"></div>
-</center>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-$(function(){
-    $('#button').click(function(){ 
-        if(!$('#iframe').length) {
-                $('#iframeHolder').html('<iframe src="https://www.google.com/maps/d/embed?mid=1fOWrMPRrasEddZTtDvLXWmse3Fw" width="640" height="480"></iframe>');
-        }
-    });   
-});
-</script>
 <?php
 require "./includes/footer.php"
 ?>
