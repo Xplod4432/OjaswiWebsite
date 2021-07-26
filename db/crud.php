@@ -33,6 +33,29 @@
             }
         }
 
+        public function insertFeedbacks($experience,$fren,$ts,$appr,$feedText){
+            try {
+                // define sql statement to be executed
+                $sql = "INSERT INTO `event_feedback`(`overall_experience`, `staff_behaviour`, `date`, `relevance`, `suggestion`) VALUES (:experience,:fren,:ts,:appr,:feedText)";
+                //prepare the sql statement for execution
+                $stmt = $this->db->prepare($sql);
+                // bind all placeholders to the actual values
+                $stmt->bindparam(':experience',$experience);
+                $stmt->bindparam(':fren',$fren);
+                $stmt->bindparam(':ts',$ts);
+                $stmt->bindparam(':appr',$appr);
+                $stmt->bindparam(':feedText',$feedText);
+
+                // execute statement
+                $stmt->execute();
+                return true;
+        
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+            }
+        }
+
         public function insertComments($cname, $cmail, $ccontent, $cbid, $doc){
             try {
                 // define sql statement to be executed
