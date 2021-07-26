@@ -1,0 +1,132 @@
+body {
+ background-image: url("images1.jpg");
+ background-color: #cccccc;
+}
+
+.reg-form {
+  background: #fff;
+  background-color: #D3D3D3;
+  box-sizing: border-box;
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.4);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 15px auto;
+  padding: 15px;
+  width: 600px;
+}
+ 
+.form-heading {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 5px;
+}
+ 
+.helper-text {
+  font-size: 12px;
+  margin-botom: 10px;
+  text-align: right;
+}
+
+.field-row {
+  position: relative;
+  width: 100%;
+}
+ 
+.form-label {
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 5px 5px 0;
+  text-align: right;
+  width: 100px;
+}
+ 
+.field {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 240px;
+}
+.field.field-short {
+  width: 70px;
+}
+
+.message {
+  display: inline-block;
+}
+ 
+:required + .message::before {
+  content: "* ";
+}
+
+.text-field:focus:required:valid {
+  outline: green solid 2px;
+}
+.text-field:focus:required:invalid {
+  outline: orange solid 2px;
+}
+.date-field:focus:in-range {
+  outline: green solid 2px;
+}
+.date-field:focus:out-of-range {
+  outline: orange solid 2px;
+}
+ 
+.website-field:focus:valid {
+  outline: green solid 2px;
+}
+.website-field:focus:invalid {
+  outline: orange solid 2px;
+}
+.form-button {
+  background: linear-gradient(180deg, #808080, #2a2a2a);
+  border: none;
+  border-radius: 0;
+  color: white;
+  display: inline-block;
+  padding: 10px;
+  font-size: 16px;
+}
+
+
+.first-name-field:focus:invalid + .message::after {
+  color: orange;
+  content: "Required Your First Name";
+}
+ 
+.last-name-field:focus:invalid + .message::after {
+  color: orange;
+  content: "Required Your Last Name";
+}
+ 
+.dob-field:focus:out-of-range + .message::after {
+  color: orange;
+  content: "Invalid Date of Birth";
+}
+ 
+.tel-field:focus:invalid + .message::after {
+  color: orange;
+  content: "Required Valid Phone Number";
+}
+ 
+.email-field:focus:invalid + .message::after {
+  color: orange;
+  content: "Required Email Address";
+}
+.hs-field:focus:invalid + .message::after {
+  color: orange;
+  content: "Required School/Department Name";
+}
+ 
+.address-field:focus:invalid + .message::after {
+  color: orange;
+  content: "Required Registration Number";
+}
+ 
+.website-field:focus:invalid + .message::after {
+  color: orange;
+ content: "Required valid URL";
+}
+  
