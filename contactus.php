@@ -4,23 +4,27 @@
 ?>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Locate Us</button>
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Contact Us</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Contact Us</button>
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Locate Us</button>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><div class="row row-cols-1 row-cols-md-3 g-4">
-<div id="iframeHolder"></div>
-<iframe src="https://www.google.com/maps/d/embed?mid=1fOWrMPRrasEddZTtDvLXWmse3Fw" width="640" height="480"></iframe>
-    </div></div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><div class="text-center">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <div class="text-center container">
         <h1>Contact Information</h1>
         <table class="table">
             <tr>
                 <td>Email</td>
                 <td><a href="mailto:ojaswilpu@gmailcom">ojaswilpu@gmail.com</a></td>
+            </tr>
+            <tr>
+                <td>Socials</td>
+                <td><a href="https://www.instagram.com/ojaswilpu/?hl=en" target="_blank"><i class="bi-facebook" style="font-size:2em;"></i></a>
+                    <a href="https://www.facebook.com/ojaswilpuSOC/" target="_blank"><i class="bi-instagram" style="font-size:2em;"></i></a>
+                    <a href="https://www.linkedin.com/in/ojaswi-lpu-aa90b91b6/" target="_blank"><i class="bi-linkedin" style="font-size:2em;"></i></a>
+                </td>
             </tr>
             <tr>
                 <td>Get in touch/Ask a query</td>
@@ -31,7 +35,10 @@
                 <td>Lovely Professional University <br>Jalandhar - Delhi, Grand Trunk Rd,<br> Phagwara, Punjab 144001</td>
             </tr>
         </table>
-    </div></div>
+    </div>
+    </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><div id="iframeHolder"></div>
+<iframe src="https://www.google.com/maps/d/embed?mid=1fOWrMPRrasEddZTtDvLXWmse3Fw" width="640" height="480"></iframe></div>
     <div class="collapse" id="AskForm">
   <div class="card card-body">
   <form method="post" action="mail_query.php" enctype="multipart/form-data">

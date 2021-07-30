@@ -1,6 +1,8 @@
 <?php 
     $title = "HomePage";
     require './includes/header.php';
+    require './db/conn.php';
+    
     $results = $crud->getBlogs();
     $carousel_get = $crud->getCarousel();
 ?>

@@ -9,6 +9,11 @@ require('PHPMailer\Exception.php');
 require('PHPMailer\PHPMailer.php');
 require('PHPMailer\SMTP.php');
 
+if (isset($_POST['submit'])) {
+
+$querymail = $_POST['querymail'];
+$querycontent = $_POST['querycontent'];
+
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
@@ -25,15 +30,21 @@ try {
 
     //Recipients
     $mail->setFrom('tushar4432@yahoo.com', 'Tushar Vilekar');
-    $mail->addAddress('tushar4432@gmail.com');
+    $mail->addAddress($querymail);
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Testing PHPMailer';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->Body    = $querycontent;
 
     $mail->send();
     echo 'Message has been sent';
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
+}
+else
+{
+    include_once 'includes/errormessage.php';
+}
+?>

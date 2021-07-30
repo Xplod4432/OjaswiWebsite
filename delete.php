@@ -1,6 +1,7 @@
 <?php
     require_once './includes/header.php';
     require_once './includes/auth_check.php';
+    require_once './db/conn.php';
     if (!isset($_GET['id'])) {
         include 'includes/errormessage.php';
     }
@@ -9,10 +10,12 @@
         $result = $crud->deleteBlog($id);
 
         if ($result) {
-            header("Location: viewrecords.php");
+            include './includes/successmessage.php';
         }
         else {
-            include 'errormessage.php';
+            include './includes/errormessage.php';
         }
     }
 ?>
+<a href="viewrecords.php" class="btn btn-info">Back to List</a>
+<a href="index.php" class="btn btn-warning">Back to Home</a>
