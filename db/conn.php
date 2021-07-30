@@ -20,6 +20,7 @@
     } catch (PDOException $e) {
         throw new PDOException($e->getMessage());
     }
+    date_default_timezone_set('Asia/Kolkata');
 
     require_once 'crud.php';
     require_once 'user.php';
