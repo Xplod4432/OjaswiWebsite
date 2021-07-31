@@ -62,14 +62,25 @@
     } ?>
     </div></div>
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><div class="">
+  <div class="row">
         <h1><?php echo $btitle; ?></h1>
-        <p><?php echo $dob; ?></p>
-        <img class="img-fluid" src="<?php echo $destination; ?>" alt="<?php echo $btitle; ?>">
-        <a href="<?php echo $fblink; ?>"><i class="bi-facebook" style="font-size:1rem;"></i></a>
-        <a href="<?php echo $instalink; ?>"><i class="bi-instagram" style="font-size:1rem;"></i></a>
-        <p><?php echo $bcontent; ?></p>
+</div>
+<div class="row">
+        <div class="col"><?php echo $dob; ?></div>
+</div>
+<div class="row row-cols-md-6 row-cols-lg-12">
+    <div class="col-12 col-md-8">
+            <img class="img-fluid" style="width: 100vw;" src="<?php echo $destination; ?>" alt="<?php echo $btitle; ?>">
+    </div>
+    <div class="row row-cols-sm-2 row-cols-md-1">
+            <div class="col d-flex justify-content-center"><a href="<?php echo $fblink; ?>"><i class="bi-facebook" style="font-size:4em;"></i></a></div>
+            <div class="col d-flex justify-content-center"><a href="<?php echo $instalink; ?>"><i class="bi-instagram" style="font-size:4em;"></i></a></div>
+            </div>
+</div>
+<div class="row">
+        <div class="col"><p><?php echo $bcontent; ?></p></div>
         <?php if (!empty($reglink)) { ?>
-        <p><a href="<?php echo $reglink; ?>">Register here</a></p>
+          <div class="col"><p><a href="<?php echo $reglink; ?>">Register here</a></p></div>
         <?php } ?>
     </div></div>
 </div>
