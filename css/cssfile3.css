@@ -1,5 +1,5 @@
 body {
- background-image: url("images1.jpg");
+ background-image: url("./images/images1.jpg");
  background-color: #cccccc;
 }
 
@@ -23,7 +23,7 @@ body {
  
 .helper-text {
   font-size: 12px;
-  margin-botom: 10px;
+  margin-bottom: 10px;
   text-align: right;
 }
 
