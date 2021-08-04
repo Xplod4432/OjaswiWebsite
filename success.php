@@ -2,21 +2,22 @@
     $title = 'Success'; 
     require_once 'includes/header.php';
     require_once './db/conn.php';
+    require './includes/sanitise.php';
 
     if(isset($_POST['submit'])){
         //extract values from the $_POST array
-        $btitle = $_POST['blogtitle'];
-        $tag = $_POST['BlogTag'];
+        $btitle = test_input($_POST['blogtitle']);
+        $tag = test_input($_POST['BlogTag']);
         $dob = date('Y-m-d H:i:s');
         $tempdob = date('Y-m-d');
         $temptime = date('H-i-s');
         $bcontent = $_POST['content'];
-        $bpreview = $_POST['previewtxt'];
-        $fblink = $_POST['fblink'];
-        $instalink = $_POST['instalink'];
+        $bpreview = test_input($_POST['previewtxt']);
+        $fblink = test_input($_POST['fblink']);
+        $instalink = test_input($_POST['instalink']);
         $reglink='';
         if (isset($_POST['reglink'])) {
-            $reglink = $_POST['reglink'];
+            $reglink = test_input($_POST['reglink']);
         }
 
         $orig_file = $_FILES["blogimage"]["tmp_name"];

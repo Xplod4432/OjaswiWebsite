@@ -3,13 +3,14 @@
 
     require_once 'includes/header.php';
     require './db/conn.php';
+    require './includes/sanitise.php';
 
     // Get Blog by id
     if(!isset($_GET['id'])){
         include './includes/errormessage.php';
         
     } else{
-        $id = $_GET['id'];
+        $id = test_input($_GET['id']);
         $result = $crud->getBlogDetails($id);
 ?>
 <div class="row">
@@ -45,14 +46,6 @@
                 </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
-                <?php 
-                        if (isset($_SESSION['last_submit']) && time()-$_SESSION['last_submit'] < 99999999)
-                        {
-                                echo "<h2>Thank you for your comment!</h2>";
-                        }
-                    else{
-                        $_SESSION['last_submit'] = time();
-                ?>
                 <form method="post" action="insertcom.php" enctype="multipart/form-data">
                         <input type="hidden" name="blog_id" value="<?php echo $result['blog_id'] ?>" />
                         <div class="mb-3">
@@ -61,7 +54,7 @@
                         </div>
                         <div class="mb-3">
                         <label for="comment_mail" class="form-label">e-Mail</label>
-                        <input required type="text" class="form-control" id="comment_mail" name="comment_mail"></input>
+                        <input required type="email" class="form-control" id="comment_mail" name="comment_mail"></input>
                         </div>
                         <div class="mb-3">
                         <label for="comment_content" class="form-label">Content</label>
@@ -72,5 +65,5 @@
         </div>
         </div>
 </section>
-<?php } }?>
+<?php }?>
 <?php require_once 'includes/footer.php'; ?>

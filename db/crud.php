@@ -33,10 +33,10 @@
             }
         }
 
-        public function insertFeedbacks($experience,$fren,$ts,$appr,$feedText){
+        public function insertFeedbacks($experience,$fren,$ts,$appr,$feedText,$event_id){
             try {
                 // define sql statement to be executed
-                $sql = "INSERT INTO `event_feedback`(`overall_experience`, `staff_behaviour`, `date`, `relevance`, `suggestion`) VALUES (:experience,:fren,:ts,:appr,:feedText)";
+                $sql = "INSERT INTO `event_feedback`(`overall_experience`, `staff_behaviour`, `date`, `relevance`, `suggestion`, `event_id`) VALUES (:experience,:fren,:ts,:appr,:feedText,:event_id)";
                 //prepare the sql statement for execution
                 $stmt = $this->db->prepare($sql);
                 // bind all placeholders to the actual values
@@ -45,6 +45,7 @@
                 $stmt->bindparam(':ts',$ts);
                 $stmt->bindparam(':appr',$appr);
                 $stmt->bindparam(':feedText',$feedText);
+                $stmt->bindparam(':event_id',$event_id);
 
                 // execute statement
                 $stmt->execute();
@@ -53,6 +54,63 @@
             } catch (PDOException $e) {
                 echo $e->getMessage();
                 return false;
+            }
+        }
+
+        public function insertEvent($event_name, $event_type){
+            try {
+                $sql = "INSERT INTO `events`(`event_name`, `event_type`) VALUES (:evname,:evtype)";
+                //prepare the sql statement for execution
+                $stmt = $this->db->prepare($sql);
+                // bind all placeholders to the actual values
+                $stmt->bindparam(':evname',$event_name);
+                $stmt->bindparam(':evtype',$event_type);
+                $stmt->execute();
+                return true;
+            } catch (PDOException $e) {
+                return false;
+            }
+        }
+
+        public function insertQuery($qmail,$qphone,$qcontent){
+            try{
+                $sql = "INSERT INTO `custqueries`(`qmail`, `qcontact`, `qcontent`) VALUES (:qmail,:qcontact,:qcontent)";
+                //prepare the sql statement for execution
+                $stmt = $this->db->prepare($sql);
+                // bind all placeholders to the actual values
+                $stmt->bindparam(':qmail',$qmail);
+                $stmt->bindparam(':qcontact',$qphone);
+                $stmt->bindparam(':qcontent',$qcontent);
+                $stmt->execute();
+                echo "<div class='py-3'>
+                <div class='alert alert-success' role='alert'>
+                  Query received! Our team will contact you soon.
+                </div>
+              </div>";
+              return true;
+            } catch (PDOException $e) {
+                echo "<div class='alert alert-danger' role='alert'>
+                Operation Encountered An Error. Please retry. 
+            </div>";
+                return false;
+            }
+        }
+
+        public function checkRepCom($cbid,$cmail){
+            try{
+                $sql = "SELECT COUNT(comment_id) FROM `blogcoments` WHERE `comment_mail` = :cmail AND `blog_id` = :cbid";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':cmail',$cmail);
+                $stmt->bindparam(':cbid',$cbid);
+                $stmt->execute();
+                $result = $stmt->fetchColumn();
+                if ($result > 0) {
+                    return false;
+                }
+                else
+                    return true;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
             }
         }
 
@@ -68,34 +126,6 @@
                 $stmt->bindparam(':ccontent',$ccontent);
                 $stmt->bindparam(':cbid',$cbid);
                 $stmt->bindparam(':doc',$doc);
-                // execute statement
-                $stmt->execute();
-                return true;
-        
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-                return false;
-            }
-        }
-
-        public function insertParticipant($fname, $lname, $dob, $uniname, $contact,$wacontact,$dept,$regno,$acayear,$regmail,$regcourse){
-            try {
-                // define sql statement to be executed
-                $sql = "INSERT INTO `registration_data`(`firstname`, `lastname`, `dateofbirth`, `university`, `contact`, `whatsapp_contact`, `department`, `registration_number`, `academic_year`, `email`, `course`) VALUES (:fname,:lname,:dob,:uniname,:contact,:wacontact,:dept,:regno,:acayear,:regmail,:regcourse)";
-                //prepare the sql statement for execution
-                $stmt = $this->db->prepare($sql);
-                // bind all placeholders to the actual values
-                $stmt->bindparam(':fname',$fname);
-                $stmt->bindparam(':lname',$lname);
-                $stmt->bindparam(':dob',$dob);
-                $stmt->bindparam(':uniname',$uniname);
-                $stmt->bindparam(':contact',$contact);
-                $stmt->bindparam(':wacontact',$wacontact);
-                $stmt->bindparam(':dept',$dept);
-                $stmt->bindparam(':regno',$regno);
-                $stmt->bindparam(':acayear',$acayear);
-                $stmt->bindparam(':regmail',$regmail);
-                $stmt->bindparam(':regcourse',$regcourse);
                 // execute statement
                 $stmt->execute();
                 return true;
@@ -129,6 +159,23 @@
              
          }
 
+         public function updateQuery($qid,$qstatus){
+            try{ 
+                 $sql = "UPDATE `custqueries` SET `qstatus`=:qstatus WHERE qid = :qid ";
+                 $stmt = $this->db->prepare($sql);
+                 // bind all placeholders to the actual values
+                 $stmt->bindparam(':qid',$qid);
+                 $stmt->bindparam(':qstatus',$qstatus);
+                 // execute statement
+                 $stmt->execute();
+                 return true;
+            }catch (PDOException $e) {
+             echo $e->getMessage();
+             return false;
+            }
+             
+         }
+
         public function getBlogs(){
             try{
                 $sql = "select *from ojblog a inner join blogtypes s on a.blog_tag_id = s.blog_tag_id order by dateofblog DESC";
@@ -139,6 +186,104 @@
                 return false;
            }
            
+        }
+
+        public function getQueries(){
+            try{
+                $sql = "SELECT * FROM `custqueries` order by qdate DESC";
+                $result = $this->db->query($sql);
+                return $result;
+            }catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+           }
+           
+        }
+
+        public function getEvents(){
+            try{
+                $sql = "SELECT * FROM `events`";
+                $result = $this->db->query($sql);
+                return $result;
+            }catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+           }
+           
+        }
+
+        public function getFeedbacks($evid){
+            try{
+                $sql = "SELECT * FROM `event_feedback` WHERE event_id = :evid";
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute([$evid]);
+                echo "<table class='table'>
+                <tr>
+                    <th>Overall Exp</th>
+                    <th>Behaviour</th>
+                    <th>Relevance</th>
+                    <th>Suggestions</th>
+                </tr>";
+                while ($row = $stmt->fetch()) {
+                    echo "<tr>
+                    <td>"; 
+                    echo $row['overall_experience']; 
+                    echo "</td>
+                    <td>";
+                    echo $row['staff_behaviour']; 
+                    echo "</td>
+                    <td>";
+                    echo $row['relevance'];
+                    echo "</td>
+                    <td>";
+                    echo $row['suggestion'];
+                    echo "</td></tr>";
+                }
+                echo "</table>";
+            }catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+           }
+           
+        }
+
+        public function OverallAvg($evid){
+            try {
+                $sql = "SELECT AVG(overall_experience) FROM event_feedback WHERE event_id = :evid";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':evid',$evid);
+                $stmt->execute();
+                $average = $stmt->fetchColumn();
+                echo $average;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function FrenAvg($evid){
+            try {
+                $sql = "SELECT AVG(staff_behaviour) FROM event_feedback WHERE event_id = :evid";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':evid',$evid);
+                $stmt->execute();
+                $average = $stmt->fetchColumn();
+                echo $average;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function ApprAvg($evid){
+            try {
+                $sql = "SELECT AVG(relevance) FROM event_feedback WHERE event_id = :evid";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':evid',$evid);
+                $stmt->execute();
+                $average = $stmt->fetchColumn();
+                echo $average;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
 
         public function getComments($id){
@@ -158,6 +303,49 @@
                     echo "</p>
                 </div>";
                 }
+            }catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+           }
+           
+        }
+
+        public function modComments($id){
+            try{
+                $sql = "SELECT * FROM `blogcoments` WHERE blog_id = ? ";
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute([$id]);
+                echo "<table class='table'>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Preview</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>";
+                while ($row = $stmt->fetch()) {
+                    echo "<tr>
+                    <td>"; 
+                    echo $row['comment_name']; 
+                    echo "</td>
+                    <td>";
+                    echo $row['comment_mail']; 
+                    echo "</td>
+                    <td>";
+                    echo $row['comment_content'];
+                    echo "</td>
+                    <td>";
+                    echo $row['comment_date'];
+                    echo "</td>
+                    <td><a onclick=\"return confirm('Are you sure you want to delete this record?')\" href='deletecomment.php?com_id=";
+                    echo $row['comment_id'];
+                    echo "&blog_id=";
+                    echo $row['blog_id'];
+                    echo "' class='btn btn-danger'>Delete</a>
+                    </td>
+                </tr>";
+                }
+                echo "</table>";
             }catch (PDOException $e) {
                 echo $e->getMessage();
                 return false;
@@ -196,6 +384,32 @@
                  $sql = "delete from ojblog where blog_id = :id";
                  $stmt = $this->db->prepare($sql);
                  $stmt->bindparam(':id', $id);
+                 $stmt->execute();
+                 return true;
+             }catch (PDOException $e) {
+                 echo $e->getMessage();
+                 return false;
+             }
+         }
+
+         public function deleteQuery($qid){
+            try{
+                 $sql = "delete from custqueries where qid = :qid";
+                 $stmt = $this->db->prepare($sql);
+                 $stmt->bindparam(':qid', $qid);
+                 $stmt->execute();
+                 return true;
+             }catch (PDOException $e) {
+                 echo $e->getMessage();
+                 return false;
+             }
+         }
+
+         public function deleteComment($com_id){
+            try{
+                 $sql = "DELETE FROM `blogcoments` WHERE comment_id = :com_id";
+                 $stmt = $this->db->prepare($sql);
+                 $stmt->bindparam(':com_id', $com_id);
                  $stmt->execute();
                  return true;
              }catch (PDOException $e) {

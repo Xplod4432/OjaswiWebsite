@@ -82,7 +82,11 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="./viewrecords.php">View Blogs</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="./eventview.php">Event Feedbacks</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="./changepwd.php">Change Password</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="./queryview.php">View Queries</a></li>
           </ul>
         </li>
         <li class="nav-item">
