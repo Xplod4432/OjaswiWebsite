@@ -1,18 +1,19 @@
 <?php 
     require_once './db/conn.php';
+    require './includes/sanitise.php';
     //Get values from post operation
     if(isset($_POST['submit'])){
         //extract values from the $_POST array
-        $id = $_POST['blog_id'];
-        $btitle = $_POST['blogtitle'];
-        $tag = $_POST['BlogTag'];
+        $id = test_input($_POST['blog_id']);
+        $btitle = test_input($_POST['blogtitle']);
+        $tag = test_input($_POST['BlogTag']);
         $bcontent = $_POST['content'];
-        $bpreview = $_POST['previewtxt'];
-        $fblink = $_POST['fblink'];
-        $instalink = $_POST['instalink'];
+        $bpreview = test_input($_POST['previewtxt']);
+        $fblink = test_input($_POST['fblink']);
+        $instalink = test_input($_POST['instalink']);
         $reglink='';
         if (isset($_POST['reglink'])) {
-            $reglink = $_POST['reglink'];
+            $reglink = test_input($_POST['reglink']);
         }
         //Call Crud function
         $result = $crud->editBlog($id,$btitle, $tag,$bcontent, $bpreview,$fblink,$instalink,$reglink);

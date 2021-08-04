@@ -4,6 +4,7 @@
     require_once './includes/header.php';
     require_once './db/conn.php';
     require_once './includes/auth_check.php'; 
+    require './includes/sanitise.php';
 
     if(!isset($_GET['id']))
     {
@@ -12,7 +13,7 @@
         header("Location: viewrecords.php");
     }
     else{
-        $id = $_GET['id'];
+        $id = test_input($_GET['id']);
         $result = $crud->getBlogDetails($id);
         $results = $crud->getTags();
     
