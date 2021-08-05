@@ -139,7 +139,7 @@ tinymce.init({
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">Content</label>
-            <textarea required class="form-control" id="content" name="content" rows="3"><?php echo $result['blogcontent'];?></textarea>
+            <textarea class="form-control" id="content" name="content" rows="3"><?php echo $result['blogcontent'];?></textarea>
         </div>
         <div class="mb-3">
             <label for="previewtxt" class="form-label">Content Preview</label>
