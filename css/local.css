@@ -1,22 +1,26 @@
-.text-white{
-    color: #f4f4f4;
-}
 .bg-foot{
-    background-color: #263238;
-}
-.footer{
-    height: 20vh;
-    padding-top: 3rem;
+    background-color: rgba(31,31,31,1);
 }
 .lr-links a{
     color: white;
     text-decoration: none;
 }
-.footer-link{
-    list-style-type: none; 
+.bold{
+    font-weight: 900;
 }
-.bg-custom{
-    background: #f12711;
-    background: -webkit-linear-gradient(to right, #f5af19, #f12711);
-    background: linear-gradient(to right, #f5af19, #f12711);
+.btn-orange-moon{
+    background: #fc4a1a;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom right, #f97f5f, #e33002);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom right, #f97f5f, #e33002); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
+}
+.footerico{
+    color: rgba(227,48,2,1)
+}
+.shareico{
+    color: rgba(0,0,0,1);
+}
+.sr-links a{
+    color: #000000;
+    text-decoration: none;
 }
