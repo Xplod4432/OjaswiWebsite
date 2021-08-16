@@ -23,24 +23,27 @@
     }
 ?>
 
-<h1 class="text-center"><?php echo $title ?> </h1>
-   
+<div class="row py-4">
+        <h1 class="text-center bold">Welcome Webmaster!</h1>
+</div>
+<div class="row">
+<div class="col-md-6 d-none d-md-block ps-5">
+    <img src="./images/My_password-amico.png" class="img-fluid" alt="Login art">
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-12 p-5 d-flex align-items-center justify-content-center">
+      <div class="rounded-3 bg-light p-5 d-flex align-items-center justify-content-center">
     <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-        <table class="table table-sm">
-            <tr>
-                <td><label for="username">Username: * </label></td>
-                <td><input type="text" name="username" class="form-control" id="username" value="<?php if($_SERVER['REQUEST_METHOD'] == 'POST') echo $_POST['username']; ?>">
-                </td>
-            </tr>
-            <tr>
-                <td><label for="password">Password: * </label></td>
-                <td><input type="password" name="password" class="form-control" id="password">
-                </td>
-            </tr>
-        </table><br/><br/>
-        <input type="submit" value="Login" class="btn btn-primary btn-block"><br/>
-        <a href="#"> Forgot Password </a>
-            
-    </form><br/><br/><br/><br/>
-
+        <div class="mb-3">
+            <input type="text" name="username" class="form-control" id="username" value="<?php if($_SERVER['REQUEST_METHOD'] == 'POST') echo $_POST['username']; ?>" placeholder="Username">
+        </div>
+        <div class="mb-3">
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+        </div>
+        <div class="d-grid gap-2 py-4">
+        <input type="submit" value="Login" class="btn btn-orange-moon rounded-3">
+        </div>
+    </form>
+</div>
+</div>
+</div>
 <?php include_once './includes/footer.php'?>
