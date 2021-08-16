@@ -4,7 +4,7 @@
     require_once './includes/auth_check.php';
     require_once './db/conn.php';
 
-    $results = $crud->getBlogs();
+    $results = $crud->getallBlogs();
 ?>
 
     <table class="table">
