@@ -111,6 +111,10 @@ tinymce.init({
             <input required type="text" class="form-control" id="blogtitle" name="blogtitle">
         </div>
         <div class="mb-3">
+            <label for="blogauthor" class="form-label">Blog Author</label>
+            <input required type="text" class="form-control" id="blogauthor" name="blogauthor">
+        </div>
+        <div class="mb-3">
             <label for="BlogTag" class="form-label">Select tag</label>
             <select id="BlogTag" name="BlogTag" class="form-select">
             <?php while($r = $results->fetch(PDO::FETCH_ASSOC)) {?>
@@ -133,6 +137,14 @@ tinymce.init({
         <div class="mb-3">
             <label for="instalink" class="form-label">Instagram Link</label>
             <input required type="text" class="form-control" id="instalink" name="instalink">
+        </div>
+        <div class="mb-3">
+            <label for="ytlink" class="form-label">YouTube Link</label>
+            <input type="text" class="form-control" id="ytlink" name="ytlink">
+        </div>
+        <div class="mb-3">
+            <label for="lilink" class="form-label">LinkedIn Link</label>
+            <input type="text" class="form-control" id="lilink" name="lilink">
         </div>
         <div class="mb-3">
         <input type="checkbox" class="form-check-input" name="needRequired" id="needRequired" onclick="EnableDisableTextBox(this)"/>
