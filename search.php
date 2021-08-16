@@ -13,7 +13,10 @@
         $search = test_input($_GET['Search']);
     }
 ?>
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row py-4">
+        <h2 class="text-center bold">Search Results for "<?php echo $search; ?>"</h2>
+</div>
+<div class="container p-4">
   <?php $crud->searchBlogs($search); ?>
 </div>
 <?php require_once 'includes/footer.php'; ?>

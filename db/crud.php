@@ -6,20 +6,23 @@
             $this->db = $conn;
         }
 
-        public function insertBlogs($btitle, $tag, $dob, $bcontent, $bpreview,$fblink,$instalink,$reglink,$destination){
+        public function insertBlogs($btitle,$bauthor, $tag, $dob, $bcontent, $bpreview,$fblink,$instalink,$ytlink,$lilink,$reglink,$destination){
             try {
                 // define sql statement to be executed
-                $sql = "INSERT INTO ojblog (blogtitle,blog_tag_id,dateofblog,blogcontent,blogpreview,facebooklink,instalink,registrationlink,imagepath) VALUES (:btitle, :tag, :dob, :bcontent, :bpreview,:fblink,:instalink,:reglink,:destination)";
+                $sql = "INSERT INTO ojblog (blogtitle,blogauthor,blog_tag_id,dateofblog,blogcontent,blogpreview,facebooklink,instalink,ytlink,lilink,registrationlink,imagepath) VALUES (:btitle,:bauthor, :tag, :dob, :bcontent, :bpreview,:fblink,:instalink,:ytlink,:lilink,:reglink,:destination)";
                 //prepare the sql statement for execution
                 $stmt = $this->db->prepare($sql);
                 // bind all placeholders to the actual values
                 $stmt->bindparam(':btitle',$btitle);
+                $stmt->bindparam(':bauthor',$bauthor);
                 $stmt->bindparam(':tag',$tag);
                 $stmt->bindparam(':dob',$dob);
                 $stmt->bindparam(':bcontent',$bcontent);
                 $stmt->bindparam(':bpreview',$bpreview);
                 $stmt->bindparam(':fblink',$fblink);
                 $stmt->bindparam(':instalink',$instalink);
+                $stmt->bindparam(':ytlink',$ytlink);
+                $stmt->bindparam(':lilink',$lilink);
                 $stmt->bindparam(':reglink',$reglink);
                 $stmt->bindparam(':destination',$destination);
 
@@ -114,6 +117,19 @@
             }
         }
 
+        public function countComments($id){
+            try{
+                $sql = "SELECT COUNT(comment_id) FROM `blogcoments` WHERE `blog_id` = :id";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':id',$id);
+                $stmt->execute();
+                $result = $stmt->fetchColumn();
+                echo $result;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
         public function insertComments($cname, $cmail, $ccontent, $cbid, $doc){
             try {
                 // define sql statement to be executed
@@ -136,18 +152,21 @@
             }
         }
 
-        public function editBlog($id,$btitle, $tag, $bcontent, $bpreview,$fblink,$instalink,$reglink){
+        public function editBlog($id,$btitle,$bauthor, $tag, $bcontent, $bpreview,$fblink,$instalink,$ytlink,$lilink,$reglink){
             try{ 
-                 $sql = "UPDATE `ojblog` SET `blogtitle`=:btitle,`blog_tag_id`=:tag,`blogcontent`=:bcontent,`blogpreview`=:bpreview,`facebooklink`=:fblink,`instalink`=:instalink,`registrationlink`=:reglink WHERE blog_id = :id ";
+                 $sql = "UPDATE `ojblog` SET `blogtitle`=:btitle,`blogauthor`=:bauthor,`blog_tag_id`=:tag,`blogcontent`=:bcontent,`blogpreview`=:bpreview,`facebooklink`=:fblink,`instalink`=:instalink,`ytlink`=:ytlink,`lilink`=:lilink,`registrationlink`=:reglink WHERE blog_id = :id ";
                  $stmt = $this->db->prepare($sql);
                  // bind all placeholders to the actual values
                  $stmt->bindparam(':id',$id);
                  $stmt->bindparam(':btitle',$btitle);
+                 $stmt->bindparam(':bauthor',$bauthor);
                  $stmt->bindparam(':tag',$tag);
                  $stmt->bindparam(':bcontent',$bcontent);
                  $stmt->bindparam(':bpreview',$bpreview);
                  $stmt->bindparam(':fblink',$fblink);
                  $stmt->bindparam(':instalink',$instalink);
+                 $stmt->bindparam(':ytlink',$ytlink);
+                 $stmt->bindparam(':lilink',$lilink);
                  $stmt->bindparam(':reglink',$reglink);
                  // execute statement
                  $stmt->execute();
@@ -178,7 +197,7 @@
 
         public function getBlogs(){
             try{
-                $sql = "select *from ojblog a inner join blogtypes s on a.blog_tag_id = s.blog_tag_id order by dateofblog DESC";
+                $sql = "select *from ojblog a inner join blogtypes s on a.blog_tag_id = s.blog_tag_id order by dateofblog DESC LIMIT 9";
                 $result = $this->db->query($sql);
                 return $result;
             }catch (PDOException $e) {
@@ -186,6 +205,31 @@
                 return false;
            }
            
+        }
+
+        public function updateVisitors($id){
+            try {
+                $sql = "UPDATE `ojblog` SET visits = visits+1 WHERE blog_id = :id";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':id',$id);
+                $stmt->execute();
+                return true;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+            }
+        }
+
+        public function updateLikes($id){
+            try {
+                $sql = "UPDATE `ojblog` SET Likes = Likes+1 WHERE id = :id";
+                $stmt->bindparam(':id',$id);
+                $stmt->execute();
+                return true;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+            }
         }
 
         public function getQueries(){
@@ -288,20 +332,19 @@
 
         public function getComments($id){
             try{
-                $sql = "SELECT * FROM `blogcoments` WHERE blog_id = ? ";
+                $sql = "SELECT * FROM `blogcoments` WHERE blog_id = ? order by comment_date DESC";
                 $stmt = $this->db->prepare($sql);
                 $stmt->execute([$id]);
                 while ($row = $stmt->fetch()) {
                     echo "<div class='comment mt-4 text-justify float-left'>
-                    <h4>"; 
+                    <h4 class='bold'>"; 
                     echo $row['comment_name']; 
-                    echo "</h4> <span>";
-                    echo $row['comment_date']; 
-                    echo "</span> <br>
-                    <p>";
-                    echo $row['comment_content'];
-                    echo "</p>
-                </div>";
+                    echo "</h4> <p>";
+                    echo $row['comment_content']; 
+                    echo "</p><span class='text-black-50'>";
+                    echo date("F d, Y", strtotime($row['comment_date']));
+                    echo "</span>
+                </div><hr/>";
                 }
             }catch (PDOException $e) {
                 echo $e->getMessage();
@@ -440,9 +483,13 @@
                     $card_src = $r['imagepath'];
                     $card_title = $r['blogtitle'];
                     $card_tag = $r['name'];
+                    $card_date = $r['dateofblog'];
                     $card_text = $r['blogpreview'];
                     $card_href = $r['blog_id'];
-                    include "./includes/cards.php";
+                    $card_likes = $r['Likes'];
+                    $card_views = $r['visits'];
+                    $card_author = $r['blogauthor'];
+                    include "./includes/scards.php";
                 }
             }catch (PDOException $e) {
                 echo $e->getMessage();
@@ -464,6 +511,42 @@
                 return false;
             }
             
+        }
+
+        public function allBlogs($blogoffset){
+            try {
+                $blogo = 10*($blogoffset);
+                $sql = "select *from ojblog a inner join blogtypes s on a.blog_tag_id = s.blog_tag_id order by dateofblog DESC LIMIT 10 OFFSET :blogoffset";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindvalue(':blogoffset', $blogo);
+                $stmt->execute();
+                while ($r=$stmt->fetch(PDO::FETCH_ASSOC)){
+                    $card_src = $r['imagepath'];
+                    $card_title = $r['blogtitle'];
+                    $card_tag = $r['name'];
+                    $card_date = $r['dateofblog'];
+                    $card_text = $r['blogpreview'];
+                    $card_href = $r['blog_id'];
+                    $card_likes = $r['Likes'];
+                    $card_views = $r['visits'];
+                    $card_author = $r['blogauthor'];
+                    include "./includes/scards.php";
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+            }
+        }
+
+        public function getallBlogs(){
+            try{
+                $sql = "select *from ojblog a inner join blogtypes s on a.blog_tag_id = s.blog_tag_id order by dateofblog DESC";
+                $result = $this->db->query($sql);
+                return $result;
+            }catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+           }
         }
  
     }

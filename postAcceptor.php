@@ -14,7 +14,7 @@ if(is_uploaded_file($temp['tmp_name']))
         header("HTTP/1.1 400 Invalid extension,Bad request");
         return;
     }
-      
+    
     $fileName = "uploads/" . $temp['name'];
     move_uploaded_file($temp['tmp_name'], $fileName);
   
