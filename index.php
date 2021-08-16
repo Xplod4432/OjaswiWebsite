@@ -6,6 +6,21 @@
     $results = $crud->getBlogs();
     $carousel_get = $crud->getCarousel();
 ?>
+<div class="row row-cols-1 row-cols-lg-2 g-4">
+  <div class="col col-lg-6 my-5">
+    <h1 class="bold"><span style="color: rgba(227,48,2,1);">Determine to Shine</span></h1>
+    <div class="my-4 text-secondary">
+			<span>Like the legendary phoenix in our logo, we always try to come back stronger with each failure, which goes hand in hand with our motto.</span>
+		</div>
+    <a class="bold btn btn-orange-moon rounded-3 my-3 px-3 mb-5" href="./AboutOjaswi.php" role="button">About Us</a>
+    <div class="row pt-5">
+    <h1 class="bold">Annual Magazine : <span style="color: rgba(227,48,2,1);">AGNIV</span></h1>
+    <div class="my-4 text-secondary">
+			<span>Coming Soon</span>
+		</div>
+</div>
+  </div>
+  <div class="col col-lg-6 my-5">
 	<div id="carouselExampleCaptions" class="carousel slide py-2" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -15,17 +30,6 @@
   <div class="carousel-inner">
    
     <?php
-    /*$car_txt = fopen("./content/carousel/carousel.txt", "rb");
-    $is_first = "active";
-    while (!feof($car_txt)) {
-    $car_src = fgets($car_txt);
-    $car_alt = fgets($car_txt);
-    $car_head = fgets($car_txt);
-    $car_desc = fgets($car_txt);
-    include "./includes/carousel.php";
-    $is_first = "";
-    }
-    fclose($car_txt);*/
     $is_first = "active";
     for ($i=0; $i < 3; $i++) { 
     $c = $carousel_get->fetch(PDO::FETCH_ASSOC);
@@ -46,8 +50,10 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+  </div>
 </div>
-<div class="row row-cols-1 row-cols-md-3 g-4">
+  </div>
+<div class="row row-cols-1 row-cols-md-3 g-4 px-3 mb-5 mt-3 pb-3 bg-light">
 <?php
   while ($r = $results->fetch(PDO::FETCH_ASSOC)) {
     $card_src = $r['imagepath'];
@@ -59,6 +65,7 @@
   }
 ?>
 </div>
+<div class="align-items-center text-center p-5"><a class="bold btn btn-orange-moon rounded-3 m-5 btn-lg" href="./moreblogs.php">More Blogs</a></div>
 <?php
   include 'includes/footer.php'
 ?>
