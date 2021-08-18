@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
   <link href="./css/local.css" rel="stylesheet">
+  <link rel="shortcut icon" href="./includes/logo.ico" type="image/x-icon"/>
+
   <style>
 body {
   font-family: 'Poppins';
@@ -25,7 +27,7 @@ body {
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top border-bottom border-2">
   <div class="container-fluid">
-  <a class="navbar-brand align-baseline" href="#">
+  <a class="navbar-brand align-baseline" href="./index.php">
         <img src="./images/logo.png" alt="" height="38" class="d-inline-block align-text-top"/>
 				<span style="color: rgba(227,48,2,1); vertical-align: middle; font-size: 1rem; position: relative;
   bottom: -3px; margin-left: 7px;" class="bold">Ojaswi</span>
@@ -50,7 +52,7 @@ body {
             <li><a class="dropdown-item" href="./contactus.php">Contact Us</a></li>
           </ul>
           </li>
-        <li class="nav-item mx-5">
+        <li class="nav-item mx-5 mb-1">
         <div class="input-group">
         <form class="d-flex" action="./search.php" method="get">
           <input class="form-control me-2 rounded-pill" id="Search" name="Search" type="search" placeholder="Search" aria-label="Search" required>
@@ -66,7 +68,7 @@ body {
 			if (!isset($_SESSION['userid'])) {
 	  ?>
     <li class="nav-item">
-        <a class="bold btn btn-orange-moon rounded-3 ms-5" href="./login.php" role="button">Login</a>
+        <a class="bold btn btn-orange-moon rounded-3 ms-5 mt-1" href="./login.php" role="button">Login</a>
       </li>
       <?php } else{?>
       <li class="nav-item dropdown">
