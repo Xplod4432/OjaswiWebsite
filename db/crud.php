@@ -124,7 +124,7 @@
                 $stmt->bindparam(':id',$id);
                 $stmt->execute();
                 $result = $stmt->fetchColumn();
-                echo $result;
+                return $result;
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
@@ -486,7 +486,7 @@
                     $card_date = $r['dateofblog'];
                     $card_text = $r['blogpreview'];
                     $card_href = $r['blog_id'];
-                    $card_likes = $r['Likes'];
+                    $card_likes = $this->countComments($r['blog_id']);
                     $card_views = $r['visits'];
                     $card_author = $r['blogauthor'];
                     include "./includes/scards.php";

@@ -30,13 +30,13 @@
         <span class="text-black-50 mt-3 ms-3">By <?php echo $result['blogauthor']; ?> - <?php echo date("F d, Y", strtotime($result['dateofblog'])); ?></span>
         <div class="row px-5 pt-3 pb-5">
         <div class="col p-2"><i class="bi bi-eye-fill" style="font-size:1.5rem;"></i><span class="text-black-50 px-2"><?php echo $result['visits']; ?></span></div>
-        <!-- <div class="col p-2"><i class="bi bi-hand-thumbs-up-fill" style="font-size:1.5rem;"></i><span class="text-black-50 px-2"><?php //echo $result['Likes']; ?></span></div> -->
-        <div class="col p-2"><i class="bi bi-chat-left-fill" style="font-size:1.5rem;"></i><span class="text-black-50 px-2"><?php $crud->countComments($id); ?></div></span>
+        <div class="col p-2"><i class="bi bi-chat-left-fill" style="font-size:1.5rem;"></i><span class="text-black-50 px-2">
+            <?php 
+                $counter = $crud->countComments($id);
+                echo $counter;
+            ?></div></span>
     </div>
     <div class="row px-5 pt-5 pb-3">
-        <!-- <div class="col-3"><?php //if (!isset($_POST['LikeSub'])) {?>
-           <a href="#"><i class="bi bi-hand-thumbs-up-fill" style="font-size:1.5rem;"></i><span class="footerico bold px-3">Like</span></div></a>
-       <?php //}?> -->
         <div class="col"><a href="#comments"><i class="bi bi-chat-left-fill" style="font-size:1.5rem;"></i><span class="footerico bold px-3">Comment</a></div></span>
     </div>
     <div class="row px-5">

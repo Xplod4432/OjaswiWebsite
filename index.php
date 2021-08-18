@@ -8,13 +8,13 @@
 ?>
 <div class="row row-cols-1 row-cols-lg-2 g-4">
   <div class="col col-lg-6 my-5">
-    <h1 class="bold"><span style="color: rgba(227,48,2,1);">Determine to Shine</span></h1>
+    <h1 class="bold"><span style="color: rgba(227,48,2,1); text-shadow: 2px 2px 5px gray;">Determine to Shine</span></h1>
     <div class="my-4 text-secondary">
 			<span>Like the legendary phoenix in our logo, we always try to come back stronger with each failure, which goes hand in hand with our motto.</span>
 		</div>
     <a class="bold btn btn-orange-moon rounded-3 my-3 px-3 mb-5" href="./AboutOjaswi.php" role="button">About Us</a>
     <div class="row pt-5">
-    <h1 class="bold">Annual Magazine : <span style="color: rgba(227,48,2,1);">AGNIV</span></h1>
+    <h1 class="bold">Annual Magazine : <span style="color: rgba(227,48,2,1); text-shadow: 2px 2px 5px yellow;">AGNIV</span></h1>
     <div class="my-4 text-secondary">
 			<span>Coming Soon</span>
 		</div>
@@ -65,7 +65,7 @@
   }
 ?>
 </div>
-<div class="align-items-center text-center p-5"><a class="bold btn btn-orange-moon rounded-3 m-5 btn-lg" href="./moreblogs.php">More Blogs</a></div>
+<div class="align-items-center text-center p-5"><a class="bold btn btn-orange-moon rounded-3 m-5 btn-lg" href="./moreblogs.php">Read More</a></div>
 <?php
   include 'includes/footer.php'
 ?>
