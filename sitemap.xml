@@ -1,0 +1,66 @@
+<?xml version="0.8.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   <url>
+
+      <loc>https://www.ojaswi.org/index.php</loc>
+
+      <priority>1</priority>
+
+   </url>
+
+   <url>
+
+      <loc>https://www.ojaswi.org/AboutOjaswi.php</loc>
+
+      <priority>0.8</priority>
+
+   </url>
+
+   <url>
+
+      <loc>https://www.ojaswi.org/blogpage.php</loc>
+
+      <priority>0.8</priority>
+
+   </url>
+
+   <url>
+
+      <loc>https://www.ojaswi.org/contactus.php</loc>
+
+      <priority>0.8</priority>
+
+   </url>
+
+   <url>
+
+      <loc>https://www.ojaswi.org/Feedback_Form.php</loc>
+
+      <priority>0.8</priority>
+
+   </url>
+
+    <url>
+
+      <loc>https://www.ojaswi.org/magazine.php</loc>
+
+      <priority>0.8</priority>
+
+   </url>
+    <url>
+
+      <loc>https://www.ojaswi.org/moreblogs.php</loc>
+
+      <priority>0.8</priority>
+
+   </url>
+    <url>
+
+      <loc>https://www.ojaswi.org/search.php</loc>
+
+      <priority>0.8</priority>
+
+   </url>
+</urlset> 

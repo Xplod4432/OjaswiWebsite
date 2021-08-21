@@ -169,9 +169,7 @@ tinymce.init({
         <label for="needRequired" class="form-check-label">Has registration link?</label>
         <div class="mb-3">
             <label for="reglink" class="form-label">Registration Link</label>
-            <input required type="text" class="form-control" id="reglink" name="reglink" <?php if (!isset($result['registrationlink'])) {
-                echo "disabled";
-            }; ?> value="<?php echo $result['registrationlink']; ?>">
+            <input type="text" class="form-control" id="reglink" name="reglink" disabled value="<?php echo $result['registrationlink']; ?>">
         <script type="text/javascript">
             function EnableDisableTextBox(needRequired) {
                 var regreq = document.getElementById("reglink");

@@ -28,23 +28,23 @@
 <div class="col-12 col-md-8 sr-links">
         <h1 class="bold mt-3 ms-3 mb-3"><?php echo $result['blogtitle']; ?></h1>
         <span class="text-black-50 mt-3 ms-3">By <?php echo $result['blogauthor']; ?> - <?php echo date("F d, Y", strtotime($result['dateofblog'])); ?></span>
-        <div class="row px-5 pt-3 pb-5">
-        <div class="col p-2"><i class="bi bi-eye-fill" style="font-size:1.5rem;"></i><span class="text-black-50 px-2"><?php echo $result['visits']; ?></span></div>
-        <div class="col p-2"><i class="bi bi-chat-left-fill" style="font-size:1.5rem;"></i><span class="text-black-50 px-2">
+        <div class="ps-2 pt-3 pb-5">
+        <span class="p-2"><i class="bi bi-eye-fill" style="font-size:1.5rem;"></i><span class="text-black-50 px-2"><?php echo $result['visits']; ?></span></span>
+        <span class="p-2"><i class="bi bi-chat-left-fill" style="font-size:1.3rem;"></i><span class="text-black-50 px-2">
             <?php 
                 $counter = $crud->countComments($id);
                 echo $counter;
-            ?></div></span>
+            ?></span></span>
     </div>
-    <div class="row px-5 pt-5 pb-3">
+    <div class="row ps-3 pt-5 pb-3">
         <div class="col"><a href="#comments"><i class="bi bi-chat-left-fill" style="font-size:1.5rem;"></i><span class="footerico bold px-3">Comment</a></div></span>
     </div>
-    <div class="row px-5">
+    <div class="row ps-3">
         <div class="col pb-1"><span class="text-black bold">Share on</span></div>
     </div>
-    <div class="row sr-links">
-    <div class="col-2"><span class="ps-5"><a href="<?php echo $result['facebooklink']; ?>"><i class="bi bi-facebook" style="font-size:1.5rem;"></i></a></span></div>
-    <div class="col-2"><span class="ps-3"><a href="<?php echo $result['instalink']; ?>"><i class="bi bi-instagram" style="font-size:1.5rem;"></i></a></span></div>
+    <div class="sr-links">
+    <span class="ps-3"><a href="<?php echo $result['facebooklink']; ?>"><i class="bi bi-facebook" style="font-size:1.5rem;"></i></a></span>
+    <span class="ps-3"><a href="<?php echo $result['instalink']; ?>"><i class="bi bi-instagram" style="font-size:1.5rem;"></i></a></span>
     <?php if (!empty($result['linkedinlink'])) { ?><div class="col-2"><span class="ps-3"><a href="https://www.linkedin.com/in/ojaswi-lpu-aa90b91b6/?originalSubdomain=in"><i class="bi bi-linkedin" style="font-size:1.5rem;"></i></a></span></div><?php } ?>
         <?php if (!empty($result['youtubelink'])) { ?><div class="col-2"><span class="ps-3"><a href="https://www.youtube.com/channel/UCuJIUiaFhTmMPT7NKTYSlrg"><i class="bi bi-youtube" style="font-size:1.5rem;"></i></a></span></div><?php } ?>
     </div>

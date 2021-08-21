@@ -1,9 +1,3 @@
-./content/dignitaries/IMG-20201018-WA0027.jpeg
-Faculty Co-ordinator: Ms. Bhanu Talwar
-  Bhanu Talwar ma'am is the prestigious Faculty coordinator of Student Organization Ojaswi. As a faculty coordinator, she always guides us when we get confused about our decisions for any event or campaign. She is one of the best faculty of Lovely Professional University.
-./content/dignitaries/IMG-20201018-WA0023.jpg
-Founder             : Mr. Abhay Sanan
-  Mr. Abhay Sanan is the man who put the roots of Student Organization Ojaswi on 19th August 2020, and through his guidance, Ojaswi came a long way. As a founder, he took the decisions which worked Positively for the Ojaswi Family. He pursued B. Tech CSE from Lovely Professional University.
 ./content/dignitaries/IMG-20201018-WA0026.jpg
 CEO                 : Mr. Gautam Singh
   Mr. Gautam Singh is the Chief Executive Officer of the Student Organization Ojaswi. He is known for his discipline and dedication to his work. He always comes out clean on his Promises. He always gives opportunities to those who want to succeed in their life.
@@ -16,3 +10,6 @@ Treasurer            : Mr. Nimit Jain
 ./content/dignitaries/IMG-20201018-WA0022.jpeg
 Administrative Head  : Mr. Ashutosh Prabhat
   Mr. Ashutosh Prabhat firmly believes and follow the rule that "If you follow the crowd, you will one day become the crowd, so stand up for the unique in you, and then the crowd will follow you." His true dedication, earnest desire, and responsible behavior for work set him miles apart from others.
+  ./content/dignitaries/IMG-20201018-WA0023.jpeg
+Marketing and Collaborations Head  : Mr. Adiz Lather
+  Mr. Adiz Lather is the heart of Oajswi, as his legendary ability to convince and collaborate with huge celebrities and companies keeps the Organization busy with a flood of opportunities. He is the personification of the quote, "Work hard in silence and let success make the noise."

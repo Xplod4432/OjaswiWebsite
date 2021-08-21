@@ -49,7 +49,7 @@ body {
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="./AboutOjaswi.php">About Us</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="./contactus.php">Contact Us</a></li>
+            <li><a class="dropdown-item" href="./vacancy.php">Vacancies</a></li>
           </ul>
           </li>
         <li class="nav-item mx-5 mb-1">
@@ -63,14 +63,8 @@ body {
           </form>
       </li>
       </ul>
+      <?php if (isset($_SESSION['userid'])){?>
       <ul class="nav navbar-nav ml-auto">
-      <?php 
-			if (!isset($_SESSION['userid'])) {
-	  ?>
-    <li class="nav-item">
-        <a class="bold btn btn-orange-moon rounded-3 ms-5 mt-1" href="./login.php" role="button">Login</a>
-      </li>
-      <?php } else{?>
       <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle bold ms-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <span>
