@@ -1,14 +1,13 @@
-  
 <?php
     $title = 'User Login'; 
 
     require_once './includes/header.php';
     require_once './db/conn.php';
+    require './includes/sanitise.php';
     
-    //If data was submitted via a form POST request, then...
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $username = strtolower(trim($_POST['username']));
-        $password = $_POST['password'];
+        $username = test_input(strtolower(trim($_POST['username'])));
+        $password = test_input($_POST['password']);
         $new_password = md5($password.$username);
 
         $result = $user->getUser($username,$new_password);
@@ -32,9 +31,9 @@
   </div>
   <div class="col-lg-6 col-md-6 col-sm-12 p-5 d-flex align-items-center justify-content-center">
       <div class="rounded-3 bg-light p-5 d-flex align-items-center justify-content-center">
-    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data"  autocomplete=off>
         <div class="mb-3">
-            <input type="text" name="username" class="form-control" id="username" value="<?php if($_SERVER['REQUEST_METHOD'] == 'POST') echo $_POST['username']; ?>" placeholder="Username">
+            <input type="text" name="username" class="form-control" id="username" placeholder="Username">
         </div>
         <div class="mb-3">
             <input type="password" name="password" class="form-control" id="password" placeholder="Password">

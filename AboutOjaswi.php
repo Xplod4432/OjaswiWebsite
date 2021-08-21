@@ -5,20 +5,6 @@
 ?>
 </div>
 <center>
-<div style="background-color: #FC600A;">
-<div class="container pb-4">
-<div class="row py-4 align-items-center" style="color: #341809;">
-<div class="col-2 p-4 lr-links">
-    <span class="p-3"><a href="https://www.facebook.com/ojaswilpuSOC/"><i class="bi bi-facebook " style="font-size:1.5rem; color:#FFE8DC"></i></a></span>
-    <span class="p-3"><a href="https://www.instagram.com/ojaswilpu/?hl=en"><i class="bi bi-instagram" style="font-size:1.5rem; color:#FFE8DC"></i></a></span>
-    <span class="p-3"><a href="https://www.youtube.com/channel/UCuJIUiaFhTmMPT7NKTYSlrg"><i class="bi bi-youtube" style="font-size:1.5rem; color:#FFE8DC"></i></a></span>
-    <span class="p-3"><a href="https://www.linkedin.com/in/ojaswi-lpu-aa90b91b6/?originalSubdomain=in"><i class="bi bi-linkedin" style="font-size:1.5rem; color:#FFE8DC"></i></a></span>
-</div>
-<div class="col p-4 align-items-end lr-links">
-        <h1 class="text-center bold">ABOUT OJASWI</h1>
-</div>
-</div>
-</div>
 <div style="background-color: #FFE8DC">
 <div class="car py-4">
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -31,30 +17,30 @@
     <div class="carousel-item">
     <div class="container" style="background-color: #341809;">
     <div class="row p-5 align-items-center">
-    <div class="col-sm-6"><h1 class="text-white bold">Top Performers of the Month</h1></div>
+    <div class="col-sm-6"><h1 class="text-white bold">Upcoming Events</h1></div>
     <div class="col-sm-6"><div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="./content/dignitaries/dummy-avatar.jpg" class="img-fluid rounded-start" alt="Testimonial">
+      <img src="uploads/2021-08-17-22-10-46.png" class="img-fluid rounded-start" alt="event poster">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Name</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Company</small></p>
+        <h5 class="card-title">ISLC 2.0</h5>
+        <p class="card-text">A literary battle between the schools of LPU.</p>
+        <a class="btn btn-orange-moon rounded-pill bold" href="https://tinyurl.com/ISLC-2byOjaswi">Register Now!</a>
       </div>
     </div>
   </div>
 </div><div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="./content/dignitaries/dummy-avatar.jpg" class="img-fluid rounded-start" alt="Testimonial">
+      <img src="./images/eternalele.jpg" class="img-fluid rounded-start" alt="event poster">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Name</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Company</small></p>
+        <h5 class="card-title">Eternal Elegance 2021: Sea of Fresher's Talent</h5>
+        <p class="card-text">Talent Hunt for Freshers of LPU</p>
+        <a class="btn btn-orange-moon rounded-pill bold" href="https://tinyurl.com/EternalElegance2021byOjaswi">Register Now!</a>
       </div>
     </div>
   </div>
