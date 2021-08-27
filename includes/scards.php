@@ -1,6 +1,6 @@
 <div class="row my-3 m-lg-5 p-lg-5 row-cols-1 row-cols-lg-2 g-4 bg-light">
     <div class="col-12 col-md-4">
-            <img class="img-fluid" style="width: 100%;" src="<?php echo $card_src; ?>" alt="<?php echo $card_title; ?>">
+            <img class="img-fluid lozad" style="width: 100%;" src="<?php echo $card_src; ?>" alt="<?php echo $card_title; ?>">
     </div>
 <div class="col-12 col-md-8 sr-links">
 <a href="./blogpage.php?id=<?php echo $card_href; ?>">

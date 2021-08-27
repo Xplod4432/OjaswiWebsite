@@ -398,7 +398,7 @@
 
         public function getCarousel(){
             try{
-                $sql = "select *from ojblog order by dateofblog DESC LIMIT 3";
+                $sql = "select *from ojblog WHERE blog_id= 30 OR blog_id = 35 OR blog_id = 20 order by dateofblog DESC LIMIT 3;";
                 $result = $this->db->query($sql);
                 return $result;
             }catch (PDOException $e) {
