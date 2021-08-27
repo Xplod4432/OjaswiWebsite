@@ -19,7 +19,7 @@
 <div class="container p-4">
   <?php $crud->allBlogs($blogoffset); ?>
 </div>
-<div class="p-5">
+<div class="d-flex justify-content-between">
     <?php if ($blogoffset > 0) {?><span><a class="bold btn btn-orange-moon rounded-3 m-5 btn-lg" href="./moreblogs.php?moreid=<?php echo ($blogoffset-1); ?>">Previous Page</a></span><?php }?>
     <?php if ($blogoffset < 5) {?><span><a class="bold btn btn-orange-moon rounded-3 m-5 btn-lg" href="./moreblogs.php?moreid=<?php echo ($blogoffset+1); ?>">Next Page</a></span><?php }?>
 </div>

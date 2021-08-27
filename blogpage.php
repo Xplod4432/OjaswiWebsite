@@ -22,7 +22,7 @@
 </div>
 <div class="row pb-5 row-cols-1 row-cols-lg-2 g-4">
     <div class="col-12 col-md-8">
-            <img class="img-fluid" style="width: 100vw;" src="<?php echo $result['imagepath']; ?>" alt="<?php echo $result['blogtitle']; ?>">
+            <img class="img-fluid lozad" style="width: 100vw;" src="<?php echo $result['imagepath']; ?>" alt="<?php echo $result['blogtitle']; ?>">
     </div>
 
 <div class="col-12 col-md-8 sr-links">

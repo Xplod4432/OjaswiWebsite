@@ -37,6 +37,7 @@
     $car_alt = $c['blogtitle'];
     $car_head = $c['blogtitle'];
     $car_desc = $c['blogpreview'];
+    $car_link = $c['blog_id'];
     include "./includes/carousel.php";
     $is_first = "";
     }
