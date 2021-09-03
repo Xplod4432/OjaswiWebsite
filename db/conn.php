@@ -1,15 +1,15 @@
 <?php
-    $host = 'localhost';
-    $db = 'ojaswi_db';
-    $user = 'root';
-    $pass = '';
-    $charset = 'utf8mb4';
+//     $host = 'localhost';
+//     $db = 'ojaswi_db';
+//     $user = 'root';
+//     $pass = '';
+//     $charset = 'utf8mb4';
 
-    /*$host = 'remotemysql.com';
+    $host = 'remotemysql.com';
     $db = '0uGBFuHa8p';
     $user = '0uGBFuHa8p';
     $pass = 'UTaQR1SXYU';
-    $charset = 'utf8mb4';*/
+    $charset = 'utf8mb4';
 
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
