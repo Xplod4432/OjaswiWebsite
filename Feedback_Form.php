@@ -17,6 +17,14 @@ Thank you for getting your interest and participation at our events. We would li
  
 <form method="post" action="feedback.php" enctype="multipart/form-data">
 <input type="hidden" name="event_id" value="<?php echo $evid ?>" />
+<div class="mb-3">
+    <label for="feedback_name" class="form-label">Particiapnt's Name <span style="color:red;font-weight:bold">*</span></label>
+    <input type="text" class="form-control" id="feedback_name" name="feedback_name" required>
+  </div>
+<div class="mb-3">
+    <label for="feedback_mail" class="form-label">Participant's Email <span style="color:red;font-weight:bold">*</span></label>
+    <input type="email" class="form-control" id="feedback_mail" name="feedback_mail" aria-describedby="emailHelp" required>
+  </div>
 <label>1. Your overall experience with us ?</label><br>
   <div class="row">
       <div class="col-md-12">

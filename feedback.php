@@ -6,6 +6,8 @@
     if(isset($_POST['submit']))
     {
         //extract values from the $_POST array
+        $feedname = test_input($_POST['feedback_name']);
+        $feedmail = test_input($_POST['feedback_mail']);
         $experience = test_input($_POST['star']);
         $fren = test_input($_POST['star2']);
         $ts = date('Y-m-d H:i:s');
@@ -14,7 +16,7 @@
         $event_id = test_input($_POST['event_id']);
 
         //Call function to insert and track if success or not
-        $isSuccess = $crud->insertFeedbacks($experience,$fren,$ts,$appr,$feedText,$event_id);
+        $isSuccess = $crud->insertFeedbacks($feedname,$feedmail,$experience,$fren,$ts,$appr,$feedText,$event_id);
         if($isSuccess)
         { ?>
             <div class="jumbotron text-center">

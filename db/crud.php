@@ -36,13 +36,15 @@
             }
         }
 
-        public function insertFeedbacks($experience,$fren,$ts,$appr,$feedText,$event_id){
+        public function insertFeedbacks($feedname,$feedmail,$experience,$fren,$ts,$appr,$feedText,$event_id){
             try {
                 // define sql statement to be executed
-                $sql = "INSERT INTO `event_feedback`(`overall_experience`, `staff_behaviour`, `date`, `relevance`, `suggestion`, `event_id`) VALUES (:experience,:fren,:ts,:appr,:feedText,:event_id)";
+                $sql = "INSERT INTO `event_feedback`(`feedname`, `feedmail`, `overall_experience`, `staff_behaviour`, `date`, `relevance`, `suggestion`, `event_id`) VALUES (:feedname,:feedmail,:experience,:fren,:ts,:appr,:feedText,:event_id)";
                 //prepare the sql statement for execution
                 $stmt = $this->db->prepare($sql);
                 // bind all placeholders to the actual values
+                $stmt->bindparam(':feedname',$feedname);
+                $stmt->bindparam(':feedmail',$feedmail);
                 $stmt->bindparam(':experience',$experience);
                 $stmt->bindparam(':fren',$fren);
                 $stmt->bindparam(':ts',$ts);
@@ -469,8 +471,7 @@
             }catch (PDOException $e) {
                 echo $e->getMessage();
                 return false;
-            }
-            
+            }            
         }
 
          public function searchBlogs($search){
